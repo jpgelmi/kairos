@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "kairos"
+version = "0.1.0"
+description = "Sistema de forma física y peaking para corredores"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "typer>=0.9.0",
+    "pandas>=2.0.0",
+    "numpy>=1.24.0",
+    "matplotlib>=3.7.0",
+    "scipy>=1.10.0",
+    "sqlite3-binary; platform_system=='Windows'",
+    "garminconnect>=0.2.0",
+    "fitparse>=1.2.0",
+    "streamlit>=1.24.0",
+    "plotly>=5.15.0",
+    "python-dotenv>=1.0.0",
+    "hrv-analysis>=0.0.4",
+]
+
+[project.scripts]
+kairos = "kairos.cli:app"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["kairos*"]
