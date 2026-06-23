@@ -156,11 +156,25 @@ parse_fit()
 ## Instalación
 
 ```bash
-git clone <repo>
-cd Kairos
+pipx install git+https://github.com/jpgelmi/kairos.git
+```
+
+> Requiere [pipx](https://pipx.pypa.io). Si no lo tienes: `brew install pipx` (macOS) o `pip install pipx`.
+
+<details>
+<summary>Alternativas</summary>
+
+```bash
+# uv (moderno)
+uv tool install git+https://github.com/jpgelmi/kairos.git
+
+# desarrollo local
+git clone https://github.com/jpgelmi/kairos.git
+cd kairos
 python -m venv .venv && source .venv/bin/activate
 pip install -e .
 ```
+</details>
 
 ---
 
@@ -237,13 +251,15 @@ pytest kairos/tests/ --cov=kairos --cov-report=term-missing
 ## Estructura de directorios
 
 ```
-Kairos/
+kairos/
 ├── final.tex              — Especificación matemática completa del modelo
 ├── README.md              — Este archivo
 ├── pyproject.toml         — Configuración del paquete Python
-├── kairos.db              — Base de datos SQLite (generada en tiempo de ejecución)
+├── .env.example           — Plantilla de credenciales (copiar a .env)
 ├── kairos/                — Código fuente
 ├── data/
-│   └── fit/               — Archivos .fit de Garmin
+│   └── race_markers.example.json  — Ejemplo de marcadores de carrera
 └── docs/                  — Documentación técnica adicional
 ```
+
+Los datos personales (`kairos.db`, `data/fit/`, `.env`) se guardan en `~/.kairos/` y nunca se versionan.
